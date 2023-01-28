@@ -1,12 +1,5 @@
-[package]
-name = "my-mini-redis"
-version = "0.1.0"
-edition = "2021"
+[workspace]
 
-[dependencies]
-tokio = { version = "1", features = ["full"] }
-mini-redis = "0.4"
-num_cpus = "1.15.0"
-futures = "0.3.25"
-console-subscriber = "0.1.8"
-bytes = "1"
+members = [
+    "hello-tokio",
+]
