@@ -2,4 +2,5 @@
 
 members = [
     "hello-tokio",
+    "shared-state",
 ]
