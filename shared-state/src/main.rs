@@ -31,7 +31,7 @@ async fn main() {
 
     loop {
         let (socket, _) = listener.accept().await.unwrap();
-        let db = db.clone();
+        let db = Arc::clone(&db);
         tokio::spawn(async move {
             process(socket, db).await;
         });
