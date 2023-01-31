@@ -5,6 +5,10 @@ edition = "2018"
 publish = false
 
 [[bin]]
+name = "async-io"
+path = "src/async-io.rs"
+
+[[bin]]
 name = "echo-server"
 path = "src/echo-server.rs"
 
