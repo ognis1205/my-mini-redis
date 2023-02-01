@@ -1,0 +1,10 @@
+[package]
+name = "frame"
+version = "0.1.0"
+edition = "2018"
+publish = false
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+bytes = "1"
+mini-redis = "0.4"
