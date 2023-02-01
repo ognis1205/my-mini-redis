@@ -1,5 +1,6 @@
 use bytes::BytesMut;
 use mini_redis::{Frame, Result};
+use std::io::Cursor;
 use tokio::net::TcpStream;
 
 macro_rules! unimplemented {
@@ -36,6 +37,17 @@ impl Connection {
     pub async fn write_frame(&mut self, frame: &Frame) -> Result<()> {}
 
     async fn parse_frame() -> Result<Frame> {
-        unimplemented!();
+        let mut buf = Cursor::new(&self.buffer[..]);
+        match Frame::check(&mut buf) {
+            Ok(_) => {
+                let len = buf.position() as usize;
+                buf.set_position(0);
+                let frame = Frame::parse(&mut buf)?;
+                self.buffer.advance(len);
+                Ok(Some(frame))
+            }
+            Err(Incomplete) => Ok(None),
+            Err(e) => Err(e.into()),
+        }
     }
 }
