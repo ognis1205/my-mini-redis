@@ -6,4 +6,6 @@ members = [
     "channel",
     "io",
     "frame",
+    "async",
+    "mini-tokio",
 ]
